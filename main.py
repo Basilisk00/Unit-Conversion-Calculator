@@ -20,7 +20,7 @@ def calculate():
     # Verify that the data is valid (i.e. an integer/decimal)
     if not valueToConvert.replace(".", "").isnumeric():
         messagebox.showerror(
-            title="ValueError", 
+            title="Value Error", 
             message="The value you entered was not valid. Try again.")
         return
     valueToConvert = float(valueToConvert)
@@ -34,15 +34,15 @@ def calculate():
     if inputUnit == emptyUnit or outputUnit == emptyUnit:
         if inputUnit == emptyUnit and outputUnit != emptyUnit:
             messagebox.showerror(
-                title="UnitError", 
+                title="Unit Error", 
                 message="The unit for input was not selected. Try again.")
         elif inputUnit != emptyUnit and outputUnit == emptyUnit:
             messagebox.showerror(
-                title="UnitError", 
+                title="Unit Error", 
                 message="The unit for output was not selected. Try again.")
         else:
             messagebox.showerror(
-                title="UnitError", 
+                title="Unit Error", 
                 message="The units for input and output were not selected. Try again.")
         return
    
@@ -67,8 +67,10 @@ def calculate():
     
     else:  
         # displaying error if units are of different types  
-        outputBox.delete(0, END)  
-        outputBox.insert(0, "ERROR, invalid type")      
+        messagebox.showerror(
+        title="Unit Conversion Error", 
+        message="The units for input and output are not compatible. Try again.")
+        outputBox.delete(0, END)     
 
 if __name__ == "__main__": 
     # dictionary of conversion factors  
@@ -109,24 +111,24 @@ if __name__ == "__main__":
     # list of options for selection menu  
     SELECTIONS = [  
         "Select Unit",  
-        "millimeter",  
-        "centimeter",  
-        "meter",  
-        "kilometer",  
-        "foot",  
-        "mile",  
-        "yard",  
-        "inch",  
-        "celsius",  
-        "fahrenheit", 
-        "liter",  
-        "milliliter",  
-        "gallon",     
-        "gram",  
-        "kilogram",  
-        "milligram",  
-        "pound",  
-        "ounce"  
+        "millimeter (mm)",  
+        "centimeter (cm)",  
+        "meter (m)",  
+        "kilometer (km)",  
+        "foot (ft)",  
+        "mile (miles)",  
+        "yard (yd)",  
+        "inch (in)",  
+        "celsius (C)",  
+        "fahrenheit (F)", 
+        "liter (L)",  
+        "milliliter (mL)",  
+        "gallon (gal)",     
+        "gram (g)",  
+        "kilogram (kg)",  
+        "milligram (mg)",  
+        "pound (lb)",  
+        "ounce (oz)"  
     ]  
 
     root = Tk() #create a root widget/ main window
